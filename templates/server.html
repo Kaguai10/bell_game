@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Server Panel</title>
+  <script>
+    async function refreshBuzzed() {
+      const res = await fetch('/buzzed');
+      const data = await res.json();
+      const list = document.getElementById('buzz-list');
+      list.innerHTML = '';
+      data.forEach((p, i) => {
+        const li = document.createElement('li');
+        li.textContent = `Player ${p.id} - Posisi ${i+1}`;
+        list.appendChild(li);
+        if (i === data.length - 1) {
+          new Audio(`/static/sounds/player${p.id}.mp3`).play();
+        }
+      });
+    }
+
+    setInterval(refreshBuzzed, 1000);
+
+    async function resetGame() {
+      await fetch('/reset', { method: 'POST' });
+    }
+  </script>
+</head>
+<body>
+  <h1>Server Panel</h1>
+  <button onclick="resetGame()">Reset Game</button>
+  <ul id="buzz-list"></ul>
+</body>
+</html>
