@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Player {{ player_id }}</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <button id="buzz-btn" onclick="buzz()">🔴</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    let pressed = false;
+    let lastResetVersion = null;
+
+    async function buzz() {
+      if (pressed) return;
+      pressed = true;
+      const res = await fetch('/buzz', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ player_id: {{ player_id }} })
+      });
+      const data = await res.json();
+      document.getElementById('result').textContent =
+        data.position ? `Kamu urutan ke-${data.position}` : "Sudah terlambat!";
+    }
+
+    async function checkReset() {
+      const res = await fetch('/reset_status');
+      const data = await res.json();
+      if (lastResetVersion === null) {
+        lastResetVersion = data.reset_version;
+      } else if (data.reset_version !== lastResetVersion) {
+        pressed = false;
+        lastResetVersion = data.reset_version;
+        document.getElementById('result').textContent = "";
+      }
+    }
+
+    setInterval(checkReset, 1000);
+  </script>
+</body>
+</html>
