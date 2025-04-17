@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
 <head>
   <title>Server Panel</title>
+  <link rel="stylesheet" href="/static/style.css">
   <script>
     async function refreshBuzzed() {
       const res = await fetch('/buzzed');
@@ -10,7 +10,7 @@
       list.innerHTML = '';
       data.forEach((p, i) => {
         const li = document.createElement('li');
-        li.textContent = `Player ${p.id} - Posisi ${i+1}`;
+        li.textContent = `Player ${p.id} - Posisi ${i + 1}`;
         list.appendChild(li);
         if (i === data.length - 1) {
           new Audio(`/static/sounds/player${p.id}.mp3`).play();
@@ -26,8 +26,9 @@
   </script>
 </head>
 <body>
-  <h1>Server Panel</h1>
-  <button onclick="resetGame()">Reset Game</button>
-  <ul id="buzz-list"></ul>
+  <div class="container">
+    <h1>Panel Server</h1>
+    <button onclick="resetGame()">🔄 Reset Game</button>
+    <ul id="buzz-list"></ul>
+  </div>
 </body>
-</html>
