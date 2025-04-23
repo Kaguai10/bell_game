@@ -3,27 +3,34 @@
   <title>Server Panel</title>
   <link rel="stylesheet" href="/static/server.css">
   <script>
+    let lastFirstBuzzedId = null;
+
     async function refreshBuzzed() {
       const res = await fetch('/buzzed');
       const data = await res.json();
       const list = document.getElementById('buzz-list');
       list.innerHTML = '';
       data.forEach((p, i) => {
-        const li = document.createElement('li');
+         const li = document.createElement('li');
         li.textContent = `Player ${p.id} - Posisi ${i + 1}`;
         list.appendChild(li);
-        if (i === data.length - 1) {
-          new Audio(`/static/sounds/player${p.id}.mp3`).play();
-        }
       });
+
+    // Cek apakah ada player pertama baru
+      if (data.length > 0 && data[0].id !== lastFirstBuzzedId) {
+        lastFirstBuzzedId = data[0].id;
+        new Audio(`/static/sounds/player${data[0].id}.mp3`).play();
+      }
     }
 
     setInterval(refreshBuzzed, 1000);
 
     async function resetGame() {
       await fetch('/reset', { method: 'POST' });
+      lastFirstBuzzedId = null; // Reset juga ID terakhir saat reset game
     }
   </script>
+
 </head>
 <body>
   <div class="container">
