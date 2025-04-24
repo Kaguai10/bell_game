@@ -1,5 +1,6 @@
-# 🔔 Buzzer Game Web App
-
+<div align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?size=30&color=00FF00&center=true&vCenter=true&width=600&lines=🔔+Bell+Game+Web+App">
+</div>
 Aplikasi web buzzer interaktif untuk game show, kuis, atau perlombaan. Setiap pemain bisa menekan tombol buzzer di perangkat mereka masing-masing dan server akan mencatat urutan siapa yang pertama kali menekan.
 
 ---
@@ -39,7 +40,7 @@ git clone https://github.com/Kaguai10/bell_game.git
 cd buzzer-app
 ```
 
-### 2. Buat virtual environment dan aktifkan
+### 2. Buat virtual environment dan aktifkan(OPSIONAL)
 ```bash
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
@@ -59,7 +60,7 @@ python app.py
 Aplikasi akan berjalan di [http://localhost:5000](http://localhost:5000) di komputer kamu.
 
 ### 5. Jalankan Ngrok untuk membuat aplikasi publik
-Download dan instal [ngrok](https://ngrok.com/), lalu jalankan perintah berikut di terminal:
+Download dan instal [ngrok](https://github.com/Kaguai10/installNGROK), lalu jalankan perintah berikut di terminal:
 ```bash
 ngrok http 5000
 ```
@@ -81,8 +82,3 @@ Kamu bisa membagikan URL yang diberikan oleh ngrok (misalnya `http://xyz123.ngro
   web: gunicorn app:app
   ```
 - Jika aplikasi perlu dijalankan dalam produksi (bukan development), gunakan **Gunicorn** untuk menjalankan Flask.
-
----
-
-## 📫 Kontak
-By: [@Kaguai](https://github.com/kaguai)
