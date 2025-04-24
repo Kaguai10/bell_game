@@ -35,7 +35,7 @@ Aplikasi web buzzer interaktif untuk game show, kuis, atau perlombaan. Setiap pe
 
 ### 1. Clone repo dan masuk ke folder
 ```bash
-git clone https://github.com/kamu/buzzer-app.git
+git clone https://github.com/Kaguai10/bell_game.git
 cd buzzer-app
 ```
 
