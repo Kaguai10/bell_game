@@ -75,6 +75,7 @@ Kamu bisa membagikan URL yang diberikan oleh ngrok (misalnya `http://xyz123.ngro
 ---
 
 ## ⚠ Catatan
+- Untuk mengakses para player bisa tambahkan dengan `/player/noPlayer` contoh /player/10 di akhir urlnya.
 - **ngrok** hanya akan aktif selama sesi berjalan. Jika kamu memulai ulang `ngrok` atau komputer, URL-nya akan berubah.
 - Pastikan semua suara (misalnya `player1.mp3`, `player2.mp3`) ada di dalam folder `static/sounds/`.
 - Jika kamu deploy di platform lain seperti Railway, pastikan **`Procfile`** berisi:
